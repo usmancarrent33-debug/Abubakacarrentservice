@@ -16,7 +16,8 @@ workflows:
     scripts:
       - name: Install Node dependencies
         script: |
-          npm ci --prefer-offline || npm install
+          rm -rf node_modules
+          npm install --include=optional
       - name: Build web application
         script: |
           npm run build
