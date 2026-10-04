@@ -1,0 +1,6 @@
+{
+  "name": "DriveLedger - Car Rental & Chauffeur Business Suite",
+  "description": "Comprehensive business management system for car rentals and driver trips, tracking customer records, vehicle fleet, daily expenses, and profit & loss reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
