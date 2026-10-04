@@ -1,0 +1,35 @@
+workflows:
+  android-apk-build:
+    name: Abubakar Car Rental - Android APK
+    max_build_duration: 30
+    instance_type: linux_x2
+    environment:
+      node: 20
+      java: 21
+    triggering:
+      events:
+        - push
+        - tag
+      branch_patterns:
+        - pattern: '*'
+          include: true
+          source: true
+    scripts:
+      - name: Install Node dependencies
+        script: |
+          npm ci --prefer-offline || npm install
+      - name: Build web application
+        script: |
+          npm run build
+      - name: Sync Capacitor Android
+        script: |
+          npx cap sync android
+      - name: Build Android APK
+        script: |
+          cd android
+          chmod +x gradlew
+          # Build release APK (signed with debug keystore for easy installation)
+          # Fallback to assembleDebug if release fails for any reason
+          ./gradlew assembleRelease || ./gradlew assembleDebug
+    artifacts:
+      - android/app/build/outputs/apk/**/*.apk

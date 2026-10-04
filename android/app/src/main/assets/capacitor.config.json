@@ -1,0 +1,8 @@
+{
+	"appId": "com.abubakacarrentservice.app",
+	"appName": "Abubakar Car Rental Service",
+	"webDir": "dist",
+	"server": {
+		"androidScheme": "https"
+	}
+}
