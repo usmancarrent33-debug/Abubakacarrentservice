@@ -2,7 +2,6 @@ workflows:
   android-apk-build:
     name: Abubakar Car Rental - Android APK
     max_build_duration: 30
-    instance_type: linux
     environment:
       node: 20
       java: 21
@@ -11,7 +10,7 @@ workflows:
         - push
         - tag
       branch_patterns:
-        - pattern: '*'
+        - pattern: 'main'
           include: true
           source: true
     scripts:
