@@ -16,8 +16,7 @@ workflows:
     scripts:
       - name: Install Node dependencies
         script: |
-          rm -rf node_modules
-          npm install --include=optional
+          npm ci
       - name: Build web application
         script: |
           npm run build
@@ -28,8 +27,6 @@ workflows:
         script: |
           cd android
           chmod +x gradlew
-          # Build release APK (signed with debug keystore for easy installation)
-          # Fallback to assembleDebug if release fails for any reason
-          ./gradlew assembleRelease || ./gradlew assembleDebug
+          ./gradlew assembleDebug
     artifacts:
       - android/app/build/outputs/apk/**/*.apk
